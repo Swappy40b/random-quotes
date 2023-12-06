@@ -50,7 +50,7 @@
 var btn=document.querySelector('#btn')
 let span=document.querySelector('span')
 let authname=document.querySelector('#authname')
-const authorPhoto =document.querySelector("#authorPhoto")
+var authorPhoto =document.querySelector("#authorPhoto")
 
 
 
