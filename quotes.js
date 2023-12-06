@@ -53,38 +53,49 @@ let authname=document.querySelector('#authname')
 var authorPhoto =document.querySelector("#authorPhoto")
 
 
+function getRandomQuote(){
+   var arrlength=arr.length
+   var arrindex=arr[Math.round(Math.random()*arrlength)]
+   console.log(arrindex)
+
+   const randomColor = getRandomColor()
+   const bodyRandomColor =getRandomBodyColor()
+   
+   
+
+   //for color change
+   
+     btn.style.backgroundColor = randomColor;
+     
+    document.body.style.backgroundColor =bodyRandomColor;
+
+   
+
+   //for content change
+   
+     span.innerHTML=arrindex.quote
+     authname.innerHTML=arrindex.name
+     authorPhoto.src=`/authors/${arrindex.photo}`
+   
+    setTimeout(function () {
+       btn.disabled = false;
+   }, 3000);
 
 
+}
 
+// Set an initial quote
+getRandomQuote();
 
  btn.addEventListener("click",function(){
 
-    var arrlength=arr.length
-    var arrindex=arr[Math.round(Math.random()*arrlength)]
-    console.log(arrindex)
+    // Disable the button
+    btn.disabled = true;
 
-    const randomColor = getRandomColor()
-    const bodyRandomColor =getRandomBodyColor()
-    
-    
+    // Get a new quote after 3 seconds
+    setTimeout(getRandomQuote, 3000);
 
-    //for color change
-    setTimeout(function(){
-      btn.style.backgroundColor = randomColor;
-      
-     document.body.style.backgroundColor =bodyRandomColor;
-
-    },3000)
-
-    //for content change
-    setTimeout(function(){
-
-      span.innerHTML=arrindex.quote
-      authname.innerHTML=arrindex.name
-      authorPhoto.src=`/authors/${arrindex.photo}`
-    
-    },3000)
-
+   
  })
 
  // Function to generate a random color
@@ -110,6 +121,30 @@ function getRandomBodyColor(){
   
 
 
+function getRandomQuote() {
+   var arrlength = arr.length;
+   var arrindex = arr[Math.floor(Math.random() * arrlength)];
+   console.log(arrindex);
 
+   const randomColor = getRandomColor();
+   const bodyRandomColor = getRandomBodyColor();
+
+   // for color change
+   btn.style.backgroundColor = randomColor;
+   document.body.style.backgroundColor = bodyRandomColor;
+
+   // for content change
+   span.innerHTML = arrindex.quote;
+   authname.innerHTML = arrindex.name;
+   authorPhoto.src = `/authors/${arrindex.photo}`;
+
+   // Enable the button after 3 seconds
+   setTimeout(function () {
+       btn.disabled = false;
+   }, 3000);
+}
+
+// Set an initial quote
+getRandomQuote();
 
 
